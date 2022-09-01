@@ -3,14 +3,14 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 
 //Components//
-import Nav from "./Nav";
+import Nav from "../Nav";
 
 //API setup
 const api = axios.create({
-  baseURL: 'http://localhost:5000/blog/post'
+  baseURL: 'http://localhost:5000/user/register'
 })
 
-function BlogPost() {
+function UserRegister() {
 
   useEffect(()=> {
     api.get('/').then(res => {
@@ -20,10 +20,10 @@ function BlogPost() {
 
   return (
     <div >
-
-Users
+        
+Register
     </div>
   );
 }
 
-export default BlogPost;
+export default UserRegister;

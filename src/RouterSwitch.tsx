@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import User from "./components/User";
-import Blog from "./components/Blog";
+import User from "./components/User/User";
+import Blog from "./components/Blog/Blog";
 import About from "./components/About";
-import UserLogin from "./components/UserLogin";
-import UserRegister from "./components/UserRegister";
-import BlogPost from "./components/BlogPost";
+import UserLogin from "./components/User/UserLogin";
+import UserRegister from "./components/User/UserRegister";
+import BlogPost from "./components/Blog/BlogPost";
 
 const RouteSwitch = () => {
   return (

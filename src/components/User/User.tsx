@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 //Components//
-import Nav from "./Nav";
+import Nav from "../Nav";
 
 //API setup
 const api = axios.create({
