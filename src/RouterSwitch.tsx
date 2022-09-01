@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import App from "./App";
 import User from "./components/User/User";
 import Blog from "./components/Blog/Blog";
@@ -24,5 +26,9 @@ const RouteSwitch = () => {
     </BrowserRouter>
   );
 };
+
+
+
+
 
 export default RouteSwitch;

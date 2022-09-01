@@ -25,7 +25,7 @@ const Nav = () => {
         <DropdownMenu
          title={'Blog'}
           options={["Blog", "Post", "Post History", "Settings"]}
-          links={["/blog", "blog/post"]}
+          links={["/blog", "/blog/post"]}
         />
         <DropdownMenu
          title={'About'}

@@ -12,12 +12,6 @@ const api = axios.create({
 
 function UserRegister() {
 
-  useEffect(()=> {
-    api.get('/').then(res => {
-      console.log(res.data);
-    })
-  }, [])
-
   return (
     <div >
         

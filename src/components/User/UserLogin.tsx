@@ -1,7 +1,7 @@
 //IMPROTS//
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 //Components//
 import Nav from "../Nav";
 
@@ -18,44 +18,80 @@ interface ErrorMessage {
 const defaultErrorMessage: ErrorMessage[] = [];
 
 function UserLogin() {
-  const [errorMessages, setErrorMessages]: [
-    ErrorMessage[],
-    (errorMessages: ErrorMessage[]) => void
-  ] = useState(defaultErrorMessage);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  
 
-  useEffect(() => {
-    api.get("/").then((res) => {
+  useEffect(()=> {
+    api.get('/').then(res => {
       console.log(res.data);
-    });
-  }, []);
+    })
+  }, [])
+  
 
-  const handleSubmit = (event:any) => {
-    // Prevent page reload
-    event.preventDefault();
-    const payload = { event };
-    const response =  axios.post('/', payload);
+  let navigate = useNavigate();
+
+  const [formValue, setformValue] = React.useState({
+    username: '',
+    password: ''
+  });
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+    let result = await axios.post("/user/login/", formValue);
+    if (result.status === 200) {
+      navigate('/');
+    }
   };
 
-
+  const handleChange = (event: any) => {
+    setformValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    });
+  }
   return (
     <div>
-      <div className="grid grid-cols-3 text-black">
-        <i/>
-        <form onSubmit={handleSubmit}>
-          <div className="">
-            <label>Username </label>
-            <input type="text" name="username" required />
+      <div className="grid grid-cols-3 ">
+        <i />
+        <form
+          onSubmit={handleSubmit}
+          className="text-white border border-custom-silver text-center "
+      
+        >
+          <div className="text-lg">Please login below.</div>
+          <div className="p-2 m-2">
+            <label className="pr-2">Username: </label>
+            <input
+              type="username"
+              name="username"
+              placeholder="Enter your username"
+              value={formValue.username}
+              onChange={handleChange}
+              required
+              className="text-black p-0.5"
+            />
+          </div>
+          <div className="p-2 m-2">
+            <label className="pr-2">Password: </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formValue.password}
+              onChange={handleChange}
+              required
+              className="text-black p-0.5"
+            />
           </div>
           <div className="">
-            <label>Password </label>
-            <input type="password" name="password" required />
-          </div>
-          <div className="bg-white-500">
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              className="bg-custom-dark-blue p-1 border border-custom-silver"
+            >
+              Submit
+            </button>
           </div>
         </form>
-           <i/>
+        <i />
       </div>
     </div>
   );
