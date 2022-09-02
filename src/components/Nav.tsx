@@ -13,7 +13,7 @@ type Props = {
 
 const Nav = () => {
   return (
-    <nav className="w-screen bg-custom-black text-white pl-20">
+    <nav className="w-screen bg-custom-black text-custom-green-blue pl-20">
       <div className=" grid grid-flow-col-dense space-x-32 text-xl text-custom-blue  font-semibold">
         <i className="logoplaceholder" />
 
@@ -44,7 +44,7 @@ const classNames = (...classes: any) => {
 
 const DropdownMenu: React.FC<Props> = ({ options, links, title }) => {
   return (
-    <Menu as="div" className="relative inline-block text-left py-4 text-white">
+    <Menu as="div" className="relative inline-block text-left py-4 text-custom-green-blue">
       <div>
         <Menu.Button className="inline-flex w-2/3 justify-center rounded-md  bg-custom-black px-4 py-2  hover:bg-custom-dark-blue focus:outline-none focus:ring-1 focus:ring-custom-silver">
           {title}
@@ -88,7 +88,7 @@ const DropdownMenuItem = (option: string, itemLink: string) => {
         <a
           href={itemLink}
           className={classNames(
-            active ? "bg-gray-900 text-white" : "text-white",
+            active ? "bg-gray-900 text-white" : "text-custom-green-blue",
             "block px-4 py-2 text-sm"
           )}
         >
