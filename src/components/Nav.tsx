@@ -13,7 +13,7 @@ type Props = {
 
 const Nav = () => {
   return (
-    <nav className="w-screen bg-custom-black text-white">
+    <nav className="w-screen bg-custom-black text-white pl-20">
       <div className=" grid grid-flow-col-dense space-x-32 text-xl text-custom-blue  font-semibold">
         <i className="logoplaceholder" />
 
@@ -25,7 +25,7 @@ const Nav = () => {
         <DropdownMenu
          title={'Blog'}
           options={["Blog", "Post", "Post History", "Settings"]}
-          links={["/blog", "/blog/post"]}
+          links={["/blog/overview", "/blog/post"]}
         />
         <DropdownMenu
          title={'About'}

@@ -21,7 +21,6 @@ function BlogPost() {
   return (
     <div >
 
-Users
     </div>
   );
 }

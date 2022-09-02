@@ -14,8 +14,7 @@ function UserRegister() {
 
   return (
     <div >
-        
-Register
+
     </div>
   );
 }
