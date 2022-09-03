@@ -11,7 +11,6 @@ import UserRegister from "./components/User/UserRegister";
 import BlogPost from "./components/Blog/BlogPost";
 import BlogUser from "./components/Blog/BlogUser";
 
-
 const RouteSwitch = () => {
   return (
     <BrowserRouter>
