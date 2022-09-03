@@ -1,11 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "../Nav";
 const { DateTime } = require("luxon");
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/blog/",
+  baseURL: window.location.href,
 });
 
 interface User {
@@ -23,18 +23,19 @@ interface Post {
 
 const defaultPost: Post[] = [];
 
-function BlogOverview() {
+function BlogUser() {
   const [posts, setPosts]: [Post[], (posts: Post[]) => void] =
     useState(defaultPost);
 
-  const [count, setCount] = useState(50);
+  const [count, setCount] = useState(0);
 
   const [postPointer, setPostsPointer] = useState(0);
 
   //Initialize data
   useEffect(() => {
+
     api
-      .get("/overview", {
+      .get('/', {
         params: {
           pointer: postPointer,
         },
@@ -43,15 +44,17 @@ function BlogOverview() {
         setPosts(res.data);
       });
 
-    api.get("/overview/count").then((res) => {
-      setCount(res.data);
-    });
+    api
+      .get("/count")
+      .then((res) => {
+        setCount(res.data);
+      });
   }, []);
 
   //get data for next page
   useEffect(() => {
     api
-      .get("/overview/", {
+      .get('/', {
         params: {
           pointer: postPointer,
         },
@@ -83,7 +86,7 @@ function BlogOverview() {
       <div className=" grid grid-cols-5">
         <i />
         <div className="text-2xl text-center col-span-3">
-          <h1>10 MOST RECENT POSTS</h1>
+          <h1>USERS PAGE!</h1>
           {posts ? (
             posts.map((post) => PostContainer(post))
           ) : (
@@ -120,7 +123,7 @@ const PostContainer = (post: Post) => {
       <div>
         <div className="grid grid-cols-2 text-base ">
           <div className=" text-left">
-           <a href={'/blog/' + post.user_details._id.toString()}> Posted By: {post.user_details.username} </a>
+            Posted By: {post.user_details.username}
           </div>
           <div className="text-right">
             Post time: {DateTime.fromISO(post.post_time).toFormat("ff")}
@@ -129,9 +132,8 @@ const PostContainer = (post: Post) => {
         <br />
         <div className="text-xl break-words">{post.message}</div>
       </div>
-      <Outlet/>
     </div>
   );
 };
 
-export default BlogOverview;
+export default BlogUser;
