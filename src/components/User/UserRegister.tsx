@@ -14,13 +14,6 @@ const api = axios.create({
 function UserRegister() {
   
 
-  useEffect(()=> {
-    api.get('/').then(res => {
-      console.log(res.data);
-    })
-  }, [])
-  
-
   let navigate = useNavigate();
 
   const [formValue, setformValue] = React.useState({

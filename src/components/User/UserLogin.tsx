@@ -7,7 +7,7 @@ import Nav from "../Nav";
 
 //API setup
 const api = axios.create({
-  baseURL: "http://localhost:5000/user/login",
+  baseURL: "http://localhost:5000/",
 });
 
 interface ErrorMessage {
@@ -21,7 +21,7 @@ function UserLogin() {
   
 
   useEffect(()=> {
-    api.get('/').then(res => {
+    api.get('/user/login').then(res => {
       console.log(res.data);
     })
   }, [])

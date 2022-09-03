@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { link } from "fs";
 
 type Props = {
   title: string;
@@ -20,7 +19,7 @@ const Nav = () => {
         <DropdownMenu
         title={'User'}
           options={["Login", "Register", "Settings", "Sign Out"]}
-          links={["/user/login", "/user/register", "/user"]}
+          links={["/user/login", "/user/register", "/user/settings", "/user/logout"]}
         />
         <DropdownMenu
          title={'Blog'}
