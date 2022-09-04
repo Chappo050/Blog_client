@@ -83,7 +83,7 @@ function BlogOverview() {
       <div className=" grid grid-cols-5">
         <i />
         <div className="text-2xl text-center col-span-3">
-          <h1>10 MOST RECENT POSTS</h1>
+          <h1>MOST RECENT POSTS</h1>
           {posts ? (
             posts.map((post) => PostContainer(post))
           ) : (

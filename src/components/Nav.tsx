@@ -12,7 +12,7 @@ type Props = {
 
 const Nav = () => {
   return (
-    <nav className="w-screen bg-custom-black text-custom-green-blue pl-20">
+    <nav className="sticky top-0 w-screen bg-custom-black text-custom-green-blue pl-20 border-b-2 border-custom-silver">
       <div className=" grid grid-flow-col-dense space-x-32 text-xl text-custom-blue  font-semibold">
         <i className="logoplaceholder" />
 
