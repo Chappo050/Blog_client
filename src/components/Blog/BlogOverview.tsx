@@ -80,16 +80,16 @@ function BlogOverview() {
 
   return (
     <div>
-      <div className=" grid grid-cols-5">
+      <div className=" grid grid-cols-5 ">
         <i />
-        <div className="text-2xl text-center col-span-3">
+        <div className="text-2xl p-3 text-center col-span-3  shadow-lg shadow-custom-silver">
           <h1>MOST RECENT POSTS</h1>
           {posts ? (
             posts.map((post) => PostContainer(post))
           ) : (
             <h1>No posts yet</h1>
           )}
-          <div className="pt-5">
+          <div className="pt-5 ">
             <button
               className="text-4xl hover:bg-custom-dark-blue w-10 "
               onClick={getPrevSet}
@@ -116,14 +116,14 @@ function BlogOverview() {
 const PostContainer = (post: Post) => {
   const user_id: String = post.user_details._id;
   return (
-    <div className="border border-custom-silver mt-3 p-3">
+    <div className="border border-custom-silver mt-3 p-3 ">
       <div>
         <div className="grid grid-cols-2 text-base ">
-          <div className=" text-left">
+          <div className=" text-left underline underline-offset-2 hover:text-custom-green-blue">
            <a href={'/blog/' + post.user_details._id.toString()}> Posted By: {post.user_details.username} </a>
           </div>
           <div className="text-right">
-            Post time: {DateTime.fromISO(post.post_time).toFormat("ff")}
+            {DateTime.fromISO(post.post_time).toFormat("ff")}
           </div>
         </div>
         <br />
