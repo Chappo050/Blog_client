@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Nav from "../Nav";
+import { useNavigate, Outlet } from "react-router-dom";
+
 const { DateTime } = require("luxon");
 
 const api = axios.create({
@@ -18,12 +19,17 @@ interface Post {
   user_details: User;
   message: String;
   post_time: String;
-  public: Boolean;
+  isPublic: Boolean;
 }
 
 const defaultPost: Post[] = [];
 
+
+
 function BlogUser() {
+
+  let navigate = useNavigate();
+
   const [posts, setPosts]: [Post[], (posts: Post[]) => void] =
     useState(defaultPost);
 
@@ -31,11 +37,11 @@ function BlogUser() {
 
   const [postPointer, setPostsPointer] = useState(0);
 
-  //Initialize data
-  useEffect(() => {
+  const [auth, setAuth] = useState(true); //replace with real Auth later
 
+  const fetchPosts = () => {
     api
-      .get('/', {
+      .get("/", {
         params: {
           pointer: postPointer,
         },
@@ -43,31 +49,22 @@ function BlogUser() {
       .then((res) => {
         setPosts(res.data);
       });
+  };
 
-    api
-      .get("/count")
-      .then((res) => {
-        setCount(res.data);
-      });
+  //Initialize data
+  useEffect(() => {
+    fetchPosts();
   }, []);
 
   //get data for next page
   useEffect(() => {
-    api
-      .get('/', {
-        params: {
-          pointer: postPointer,
-        },
-      })
-      .then((res) => {
-        setPosts(res.data);
-      });
+    fetchPosts();
     window.scrollTo(0, 0);
   }, [postPointer]);
 
   function getNextSet() {
     //increment pointer to get next 10
-    if (postPointer + 10 > count) {
+    if (count - postPointer > 0) {
       return;
     }
     setPostsPointer(postPointer + 10);
@@ -81,14 +78,28 @@ function BlogUser() {
     setPostsPointer(postPointer - 10);
   }
 
+  function delPost(postId: String) {
+    api.delete("/", {
+      params: {
+        postId: postId,
+      },
+    });
+    fetchPosts();
+  }
+
+  function editPost(postId: String) {
+    navigate( '/blog/post/' + postId);
+  }
+
   return (
     <div>
+        <Outlet/>
       <div className=" grid grid-cols-5">
         <i />
         <div className="text-2xl text-center col-span-3">
           <h1>USERS PAGE!</h1>
-          {posts ? (
-            posts.map((post) => PostContainer(post))
+          {posts.length > 0 ? (
+            posts.map((post) => PostContainer(post, auth, delPost, editPost))
           ) : (
             <h1>No posts yet</h1>
           )}
@@ -111,12 +122,18 @@ function BlogUser() {
 
         <i />
       </div>
+    
     </div>
   );
 }
 
 //Creates a singular post
-const PostContainer = (post: Post) => {
+const PostContainer = (
+  post: Post,
+  auth: boolean,
+  delPost: Function,
+  editPost: Function
+) => {
   const user_id: String = post.user_details._id;
   return (
     <div className="border border-custom-silver mt-3 p-3">
@@ -132,6 +149,24 @@ const PostContainer = (post: Post) => {
         <br />
         <div className="text-xl break-words">{post.message}</div>
       </div>
+      {auth ? (
+        <div className="text-left">
+          <button
+            className="bg-custom-dark-blue p-1 text-base mx-1"
+            onClick={() => delPost(post._id)}
+          >
+            Del
+          </button>
+          <button
+            className="bg-custom-dark-blue p-1 text-base mx-1"
+            onClick={() => editPost(post._id)}
+          >
+            Edit
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

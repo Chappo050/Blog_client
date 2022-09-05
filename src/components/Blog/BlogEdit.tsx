@@ -1,18 +1,14 @@
 //IMPROTS//
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Outlet, useNavigate } from "react-router-dom";
-//Components//
-import Nav from "../Nav";
+import { useLocation } from "react-router-dom";
 
 //API setup
 const api = axios.create({
-  baseURL: "http://localhost:5000/blog/post",
+  baseURL: window.location.href,
 });
 
-function BlogPost() {
-  let navigate = useNavigate();
-
+function PostEdit() {
   const [messagePosted, setMessagePosted] = useState(false);
 
   const [checked, setChecked] = useState(true);
@@ -22,11 +18,17 @@ function BlogPost() {
     isPublic: checked,
   });
 
+  useEffect(() => {
+    api.get(window.location.href).then((res) => {
+      setformValue(res.data[0]);
+    });
+  }, []);
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log(formValue);
 
-    let result = await axios.post("/blog/post", formValue);
+    let result = await axios.post(window.location.pathname, formValue);
     if (result.status === 200) {
       setMessagePosted(true);
     }
@@ -41,8 +43,6 @@ function BlogPost() {
 
   const handleCheck = () => {
     setChecked(!checked);
-    console.log('Normal page');
-    
   };
 
   useEffect(() => {
@@ -50,7 +50,6 @@ function BlogPost() {
   }, [checked]);
   return (
     <div>
- 
       <>
         <div className="grid grid-cols-5 ">
           <i />
@@ -58,19 +57,20 @@ function BlogPost() {
             onSubmit={handleSubmit}
             className="text-custom-green-blue border border-custom-silver text-center col-span-3 "
           >
-            <div className="text-lg pt-5">Please enter your message below.</div>
+            <div className="text-lg pt-5">Please Edit Your Post.</div>
 
             <div className="p-2 m-10">
               <textarea
                 name="message"
                 overflow-y="hidden"
-                placeholder="Enter your message here"
                 value={formValue.message}
                 onChange={handleChange}
                 required
                 className="text-black p-2 h-44 w-full bg-custom-aquamarine"
                 maxLength={750}
-              />
+              >
+                {" "}
+              </textarea>
             </div>
 
             {messagePosted ? <SuccessMessage /> : null}
@@ -103,9 +103,9 @@ function BlogPost() {
 const SuccessMessage = () => {
   return (
     <div className="text-custom-green-blue border-custom-silver text-2xl border-b-4 border-t-4  animate-pulse">
-      Message successfully posted!
+      Message successfully updated!
     </div>
   );
 };
 
-export default BlogPost;
+export default PostEdit;

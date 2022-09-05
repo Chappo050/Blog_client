@@ -117,8 +117,7 @@ const PostContainer = (post: Post) => {
   const user_id: String = post.user_details._id;
 
   return (
-    <>
-      {post.isPublic ? (
+ (
         <div className="border border-custom-silver mt-3 p-3 ">
           <div>
             <div className="grid grid-cols-2 text-base ">
@@ -137,10 +136,7 @@ const PostContainer = (post: Post) => {
           </div>
           <Outlet />
         </div>
-      ) : (
-        <></>
-      )}
-    </>
+      )
   );
 };
 

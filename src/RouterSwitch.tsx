@@ -9,6 +9,7 @@ import UserLogin from "./components/User/UserLogin";
 import UserLogout from "./components/User/UserLogout";
 import UserRegister from "./components/User/UserRegister";
 import BlogPost from "./components/Blog/BlogPost";
+import BlogEdit from "./components/Blog/BlogEdit";
 import BlogUser from "./components/Blog/BlogUser";
 
 const RouteSwitch = () => {
@@ -22,9 +23,10 @@ const RouteSwitch = () => {
           <Route path="logout" element={<UserLogout />} />
         </Route>
         <Route path="blog" element={<BlogIndex />}>
-          <Route path=":userId" element={<BlogUser />} />
           <Route path="overview" element={<BlogOverview />} />
+          <Route path=":userId" element={<BlogUser />} />
           <Route path="post" element={<BlogPost />} />
+          <Route path="post/:postId" element={<BlogEdit />} />
         </Route>
         <Route path="about" element={<About />} />
       </Routes>
