@@ -18,7 +18,7 @@ interface Post {
   user_details: User;
   message: String;
   post_time: String;
-  public: Boolean;
+  isPublic: Boolean;
 }
 
 const defaultPost: Post[] = [];
@@ -82,7 +82,7 @@ function BlogOverview() {
     <div>
       <div className=" grid grid-cols-5 ">
         <i />
-        <div className="text-2xl p-3 text-center col-span-3  shadow-lg shadow-custom-silver">
+        <div className="text-2xl p-3 text-center col-span-3  shadow-md shadow-custom-silver">
           <h1>MOST RECENT POSTS</h1>
           {posts ? (
             posts.map((post) => PostContainer(post))
@@ -115,22 +115,32 @@ function BlogOverview() {
 //Creates a singular post
 const PostContainer = (post: Post) => {
   const user_id: String = post.user_details._id;
+
   return (
-    <div className="border border-custom-silver mt-3 p-3 ">
-      <div>
-        <div className="grid grid-cols-2 text-base ">
-          <div className=" text-left underline underline-offset-2 hover:text-custom-green-blue">
-           <a href={'/blog/' + post.user_details._id.toString()}> Posted By: {post.user_details.username} </a>
+    <>
+      {post.isPublic ? (
+        <div className="border border-custom-silver mt-3 p-3 ">
+          <div>
+            <div className="grid grid-cols-2 text-base ">
+              <div className=" text-left underline underline-offset-2 hover:text-custom-green-blue">
+                <a href={"/blog/" + post.user_details._id.toString()}>
+                  {" "}
+                  Posted By: {post.user_details.username}{" "}
+                </a>
+              </div>
+              <div className="text-right">
+                {DateTime.fromISO(post.post_time).toFormat("ff")}
+              </div>
+            </div>
+            <br />
+            <div className="text-xl break-words">{post.message}</div>
           </div>
-          <div className="text-right">
-            {DateTime.fromISO(post.post_time).toFormat("ff")}
-          </div>
+          <Outlet />
         </div>
-        <br />
-        <div className="text-xl break-words">{post.message}</div>
-      </div>
-      <Outlet/>
-    </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
