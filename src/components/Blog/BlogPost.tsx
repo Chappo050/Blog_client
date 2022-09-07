@@ -17,6 +17,8 @@ function BlogPost() {
 
   const [checked, setChecked] = useState(true);
 
+  const [auth, setAuth] = useState(true); //replace with real Auth later
+
   const [formValue, setformValue] = useState({
     message: "",
     isPublic: checked,
@@ -48,6 +50,13 @@ function BlogPost() {
   useEffect(() => {
     formValue.isPublic = checked;
   }, [checked]);
+
+useEffect(() =>{
+if (!auth) {
+  navigate('/user/login')
+}
+},[])
+
   return (
     <div>
  

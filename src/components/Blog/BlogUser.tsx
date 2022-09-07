@@ -24,10 +24,7 @@ interface Post {
 
 const defaultPost: Post[] = [];
 
-
-
 function BlogUser() {
-
   let navigate = useNavigate();
 
   const [posts, setPosts]: [Post[], (posts: Post[]) => void] =
@@ -44,10 +41,21 @@ function BlogUser() {
       .get("/", {
         params: {
           pointer: postPointer,
+          auth: auth,
         },
       })
       .then((res) => {
         setPosts(res.data);
+      });
+
+    api
+      .get("/count", {
+        params: {
+          auth: auth,
+        },
+      })
+      .then((res) => {
+        setCount(res.data);
       });
   };
 
@@ -64,13 +72,17 @@ function BlogUser() {
 
   function getNextSet() {
     //increment pointer to get next 10
-    if (count - postPointer > 0) {
-      return;
+    console.log("count" + count);
+    console.log("point" + postPointer);
+    if (count - (postPointer + 10) > 0) {
+      setPostsPointer(postPointer + 10);
     }
-    setPostsPointer(postPointer + 10);
+    return
   }
 
   function getPrevSet() {
+    console.log("count" + count);
+    console.log("point" + postPointer);
     if (postPointer < 10) {
       return;
     }
@@ -88,12 +100,12 @@ function BlogUser() {
   }
 
   function editPost(postId: String) {
-    navigate( '/blog/post/' + postId);
+    navigate("/blog/post/" + postId);
   }
 
   return (
     <div>
-        <Outlet/>
+      <Outlet />
       <div className=" grid grid-cols-5">
         <i />
         <div className="text-2xl text-center col-span-3">
@@ -122,7 +134,6 @@ function BlogUser() {
 
         <i />
       </div>
-    
     </div>
   );
 }

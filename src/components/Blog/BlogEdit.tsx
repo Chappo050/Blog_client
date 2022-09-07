@@ -2,23 +2,31 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-
+import { Outlet, useNavigate } from "react-router-dom";
 //API setup
 const api = axios.create({
   baseURL: window.location.href,
 });
 
 function PostEdit() {
+  let navigate = useNavigate();
+
   const [messagePosted, setMessagePosted] = useState(false);
 
-  const [checked, setChecked] = useState(true);
+  const [auth, setAuth] = useState(true); //replace with real Auth later
 
   const [formValue, setformValue] = useState({
+    _id: "",
+    user_details: {},
     message: "",
-    isPublic: checked,
+    post_time: "",
+    isPublic: true,
   });
 
   useEffect(() => {
+    if (!auth) {
+      navigate("/user/login");
+    }
     api.get(window.location.href).then((res) => {
       setformValue(res.data[0]);
     });
@@ -42,12 +50,15 @@ function PostEdit() {
   };
 
   const handleCheck = () => {
-    setChecked(!checked);
+    setformValue({
+      _id: formValue._id,
+      user_details: formValue.user_details,
+      message: formValue.message,
+      post_time: formValue.post_time,
+      isPublic: !formValue.isPublic,
+    });
   };
 
-  useEffect(() => {
-    formValue.isPublic = checked;
-  }, [checked]);
   return (
     <div>
       <>
@@ -80,7 +91,7 @@ function PostEdit() {
               <input
                 type="checkbox"
                 name="isPublic"
-                checked={checked}
+                checked={formValue.isPublic}
                 onChange={handleCheck}
               />
             </div>
