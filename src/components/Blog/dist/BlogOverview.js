@@ -57,7 +57,7 @@ function BlogOverview() {
     return (React.createElement("div", null,
         React.createElement("div", { className: " grid grid-cols-5 " },
             React.createElement("i", null),
-            React.createElement("div", { className: "text-2xl p-3 text-center col-span-3  shadow-md shadow-custom-silver" },
+            React.createElement("div", { className: "text-2xl p-3 text-center col-span-3 " },
                 React.createElement("h1", null, "MOST RECENT POSTS"),
                 posts ? (posts.map(function (post) { return PostContainer(post); })) : (React.createElement("h1", null, "No posts yet")),
                 React.createElement("div", { className: "pt-5 " },

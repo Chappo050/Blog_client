@@ -4,7 +4,7 @@ var react_1 = require("react");
 var react_2 = require("@headlessui/react");
 var solid_1 = require("@heroicons/react/20/solid");
 var Nav = function () {
-    return (react_1["default"].createElement("nav", { className: "sticky top-0 w-screen bg-custom-black text-custom-green-blue pl-20 border-b-2 border-custom-silver" },
+    return (react_1["default"].createElement("nav", { className: "sticky top-0 w-screen bg-custom-black text-custom-green-blue pl-28 border-b-2 border-custom-silver" },
         react_1["default"].createElement("div", { className: " grid grid-flow-col-dense space-x-32 text-xl text-custom-blue  font-semibold" },
             react_1["default"].createElement("i", { className: "logoplaceholder" }),
             react_1["default"].createElement(DropdownMenu, { title: 'User', options: ["Login", "Register", "Sign Out"], links: ["/user/login", "/user/register", "/user/logout"] }),
