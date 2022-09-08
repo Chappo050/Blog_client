@@ -7,6 +7,7 @@ const { DateTime } = require("luxon");
 
 const api = axios.create({
   baseURL: window.location.href,
+  withCredentials: true,
 });
 
 interface User {
@@ -22,10 +23,14 @@ interface Post {
   isPublic: Boolean;
 }
 
+interface authJSON {
+  logged: boolean,
+}
 const defaultPost: Post[] = [];
 
 function BlogUser() {
   let navigate = useNavigate();
+
 
   const [posts, setPosts]: [Post[], (posts: Post[]) => void] =
     useState(defaultPost);
@@ -37,6 +42,13 @@ function BlogUser() {
   const [auth, setAuth] = useState(true); //replace with real Auth later
 
   const fetchPosts = () => {
+    api.get('/auth').then((res) => {
+     const results:authJSON =  res.data;
+    setAuth(results.logged)
+    console.log(results);
+    
+    })
+
     api
       .get("/", {
         params: {

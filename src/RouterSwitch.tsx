@@ -25,7 +25,14 @@ const RouteSwitch = () => {
         </Route>
         <Route path="blog" element={<BlogIndex />}>
           <Route path="overview" element={<BlogOverview />} />
-          <Route path=":userId" element={<BlogUser />} />
+          <Route
+            path=":userId"
+            element={
+              <UserAuth>
+                <BlogUser />
+              </UserAuth>
+            }
+          />
           <Route
             path="post"
             element={

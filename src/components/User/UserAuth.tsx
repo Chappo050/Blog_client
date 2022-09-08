@@ -38,10 +38,11 @@ function Auth({ children }: { children: JSX.Element }) {
   return (
     <>
       {loading ? <span> Loading... </span> : <></>}
-
+   
       {logged ? children : <></>}
 
       {!logged && !loading ? <Navigate to="/user/login" /> : <></>}
+
     </>
   );
 }
