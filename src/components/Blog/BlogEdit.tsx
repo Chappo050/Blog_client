@@ -6,6 +6,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 //API setup
 const api = axios.create({
   baseURL: window.location.href,
+  withCredentials: true
 });
 
 function PostEdit() {

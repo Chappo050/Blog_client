@@ -18,17 +18,17 @@ const Nav = () => {
 
         <DropdownMenu
         title={'User'}
-          options={["Login", "Register", "Settings", "Sign Out"]}
-          links={["/user/login", "/user/register", "/user/settings", "/user/logout"]}
+          options={["Login", "Register", "Sign Out"]}
+          links={["/user/login", "/user/register", "/user/logout"]}
         />
         <DropdownMenu
          title={'Blog'}
-          options={["Blog", "Post", "Post History", "Settings"]}
+          options={["Overview", "Post"]}
           links={["/blog/overview", "/blog/post"]}
         />
         <DropdownMenu
          title={'About'}
-          options={["About", "Github", "Contact"]}
+          options={["About"]}
           links={["/about"]}
         />
         <i />

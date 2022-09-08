@@ -4,10 +4,12 @@ import axios from "axios";
 import { Outlet, useNavigate } from "react-router-dom";
 //Components//
 import Nav from "../Nav";
+import { response } from "express";
 
 //API setup
 const api = axios.create({
   baseURL: "http://localhost:5000/blog/post",
+  withCredentials: true,
 });
 
 function BlogPost() {
@@ -24,14 +26,15 @@ function BlogPost() {
     isPublic: checked,
   });
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     console.log(formValue);
 
-    let result = await axios.post("/blog/post", formValue);
-    if (result.status === 200) {
-      setMessagePosted(true);
-    }
+    api.post("/", formValue).then((res) => {
+      if (res.status === 200) {
+        setMessagePosted(true);
+      }
+    });
   };
 
   const handleChange = (event: any) => {
@@ -43,23 +46,20 @@ function BlogPost() {
 
   const handleCheck = () => {
     setChecked(!checked);
-    console.log('Normal page');
-    
   };
 
   useEffect(() => {
     formValue.isPublic = checked;
   }, [checked]);
 
-useEffect(() =>{
-if (!auth) {
-  navigate('/user/login')
-}
-},[])
+  useEffect(() => {
+    if (!auth) {
+      navigate("/user/login");
+    }
+  }, []);
 
   return (
     <div>
- 
       <>
         <div className="grid grid-cols-5 ">
           <i />
