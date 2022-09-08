@@ -7,7 +7,8 @@ import Nav from "../Nav";
 
 //API setup
 const api = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "http://localhost:5000/user/logout",
+  withCredentials: true,
 });
 
 interface ErrorMessage {
@@ -23,7 +24,9 @@ function UserLogin() {
 
 
   useEffect(() => {
+    api.get('')
     setTimeout(function() {
+  
       navigate('/')
     }, 2000);
   }, []);

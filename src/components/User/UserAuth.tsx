@@ -10,6 +10,7 @@ function Auth({ children }: { children: JSX.Element }) {
   const [loading, setLoading] = useState(true);
   const [redirect, setRedirect] = useState(false);
 
+  //Get sessions information
   async function checkAuth() {
     await axios
       .get("http://localhost:5000/user/auth/", {
@@ -25,6 +26,7 @@ function Auth({ children }: { children: JSX.Element }) {
     setLoading(false);
   }
 
+  //Server fails to respond to redirect
   useEffect(() => {
     checkAuth();
     setTimeout(() => {

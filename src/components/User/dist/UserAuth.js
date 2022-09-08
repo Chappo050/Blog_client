@@ -46,6 +46,7 @@ function Auth(_a) {
     var _b = react_1.useState(false), logged = _b[0], setLogged = _b[1];
     var _c = react_1.useState(true), loading = _c[0], setLoading = _c[1];
     var _d = react_1.useState(false), redirect = _d[0], setRedirect = _d[1];
+    //Get sessions information
     function checkAuth() {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -69,6 +70,7 @@ function Auth(_a) {
             });
         });
     }
+    //Server fails to respond to redirect
     react_1.useEffect(function () {
         checkAuth();
         setTimeout(function () {
