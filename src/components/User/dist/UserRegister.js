@@ -53,41 +53,27 @@ var axios_1 = require("axios");
 var react_router_dom_1 = require("react-router-dom");
 //API setup
 var api = axios_1["default"].create({
-    baseURL: window.location.href,
-    withCredentials: true
+    baseURL: "http://localhost:5000/user/register"
 });
-function PostEdit() {
+function UserRegister() {
     var _this = this;
     var navigate = react_router_dom_1.useNavigate();
-    var _a = react_1.useState(false), messagePosted = _a[0], setMessagePosted = _a[1];
-    var _b = react_1.useState(true), auth = _b[0], setAuth = _b[1]; //replace with real Auth later
-    var _c = react_1.useState({
-        _id: "",
-        user_details: {},
-        message: "",
-        post_time: "",
-        isPublic: true
-    }), formValue = _c[0], setformValue = _c[1];
-    react_1.useEffect(function () {
-        if (!auth) {
-            navigate("/user/login");
-        }
-        api.get(window.location.href).then(function (res) {
-            setformValue(res.data[0]);
-        });
-    }, []);
+    var _a = react_1["default"].useState({
+        username: '',
+        email: '',
+        password: ''
+    }), formValue = _a[0], setformValue = _a[1];
     var handleSubmit = function (e) { return __awaiter(_this, void 0, void 0, function () {
         var result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     e.preventDefault();
-                    console.log(formValue);
-                    return [4 /*yield*/, axios_1["default"].post(window.location.pathname, formValue)];
+                    return [4 /*yield*/, api.post("/", formValue)];
                 case 1:
                     result = _a.sent();
                     if (result.status === 200) {
-                        setMessagePosted(true);
+                        navigate('/');
                     }
                     return [2 /*return*/];
             }
@@ -97,32 +83,22 @@ function PostEdit() {
         var _a;
         setformValue(__assign(__assign({}, formValue), (_a = {}, _a[event.target.name] = event.target.value, _a)));
     };
-    var handleCheck = function () {
-        setformValue({
-            _id: formValue._id,
-            user_details: formValue.user_details,
-            message: formValue.message,
-            post_time: formValue.post_time,
-            isPublic: !formValue.isPublic
-        });
-    };
-    return (React.createElement("div", null,
-        React.createElement(React.Fragment, null,
-            React.createElement("div", { className: "grid grid-cols-5 " },
-                React.createElement("i", null),
-                React.createElement("form", { onSubmit: handleSubmit, className: "text-custom-green-blue border border-custom-silver text-center col-span-3 " },
-                    React.createElement("div", { className: "text-lg pt-5" }, "Please Edit Your Post."),
-                    React.createElement("div", { className: "p-2 m-10" },
-                        React.createElement("textarea", { name: "message", "overflow-y": "hidden", value: formValue.message, onChange: handleChange, required: true, className: "text-black p-2 h-44 w-full bg-custom-aquamarine", maxLength: 750 }, " ")),
-                    messagePosted ? React.createElement(SuccessMessage, null) : null,
-                    React.createElement("div", { className: "p-2 m-2" },
-                        React.createElement("label", { className: "pr-2" }, "Public? "),
-                        React.createElement("input", { type: "checkbox", name: "isPublic", checked: formValue.isPublic, onChange: handleCheck })),
-                    React.createElement("div", { className: "" },
-                        React.createElement("button", { type: "submit", className: "bg-custom-dark-blue p-1 border border-custom-silver" }, "Submit"))),
-                React.createElement("i", null)))));
+    return (react_1["default"].createElement("div", null,
+        react_1["default"].createElement("div", { className: "grid grid-cols-3 " },
+            react_1["default"].createElement("i", null),
+            react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "text-white border border-custom-silver text-center " },
+                react_1["default"].createElement("div", { className: "text-lg" }, "Please register your account below."),
+                react_1["default"].createElement("div", { className: "p-2 m-2" },
+                    react_1["default"].createElement("label", { className: "pr-2 left-6" }, "Username: "),
+                    react_1["default"].createElement("input", { type: "username", name: "username", placeholder: "Enter your username", value: formValue.username, onChange: handleChange, required: true, className: "text-black p-0.5" })),
+                react_1["default"].createElement("div", { className: "p-2 m-2" },
+                    react_1["default"].createElement("label", { className: "pr-2" }, "Email: "),
+                    react_1["default"].createElement("input", { type: "email", name: "email", placeholder: "Enter your email", value: formValue.email, onChange: handleChange, required: true, className: "text-black p-0.5" })),
+                react_1["default"].createElement("div", { className: "p-2 m-2" },
+                    react_1["default"].createElement("label", { className: "pr-2" }, "Password: "),
+                    react_1["default"].createElement("input", { type: "password", name: "password", placeholder: "Enter your password", value: formValue.password, onChange: handleChange, required: true, className: "text-black p-0.5" })),
+                react_1["default"].createElement("div", { className: "" },
+                    react_1["default"].createElement("button", { type: "submit", className: "bg-custom-dark-blue p-1 border border-custom-silver" }, "Submit"))),
+            react_1["default"].createElement("i", null))));
 }
-var SuccessMessage = function () {
-    return (React.createElement("div", { className: "text-custom-green-blue border-custom-silver text-2xl border-b-4 border-t-4  animate-pulse" }, "Message successfully updated!"));
-};
-exports["default"] = PostEdit;
+exports["default"] = UserRegister;

@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Nav from "../Nav";
 const { DateTime } = require("luxon");
 
 const api = axios.create({

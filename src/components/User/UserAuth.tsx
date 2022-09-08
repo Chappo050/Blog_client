@@ -1,5 +1,5 @@
 //IMPROTS//
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -8,7 +8,6 @@ import axios from "axios";
 function Auth({ children }: { children: JSX.Element }) {
   const [logged, setLogged] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [redirect, setRedirect] = useState(false);
 
   //Get sessions information
   async function checkAuth() {

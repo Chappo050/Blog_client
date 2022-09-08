@@ -79,35 +79,35 @@ function BlogUser() {
     function editPost(postId) {
         navigate("/blog/post/" + postId);
     }
-    return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement(react_router_dom_1.Outlet, null),
-        react_1["default"].createElement("div", { className: " grid grid-cols-5" },
-            react_1["default"].createElement("i", null),
-            react_1["default"].createElement("div", { className: "text-2xl text-center col-span-3" },
-                react_1["default"].createElement("h1", null, "USERS PAGE!"),
-                posts.length > 0 ? (posts.map(function (post) { return PostContainer(post, auth, delPost, editPost); })) : (react_1["default"].createElement("h1", null, "No posts yet")),
-                react_1["default"].createElement("div", { className: "pt-5" },
-                    react_1["default"].createElement("button", { className: "text-4xl hover:bg-custom-dark-blue w-10 ", onClick: getPrevSet }, "<"),
-                    react_1["default"].createElement("i", { className: "w-5 px-10" }),
-                    react_1["default"].createElement("button", { className: "text-4xl hover:bg-custom-dark-blue w-10", onClick: getNextSet }, ">"))),
-            react_1["default"].createElement("i", null))));
+    return (React.createElement("div", null,
+        React.createElement(react_router_dom_1.Outlet, null),
+        React.createElement("div", { className: " grid grid-cols-5" },
+            React.createElement("i", null),
+            React.createElement("div", { className: "text-2xl text-center col-span-3" },
+                React.createElement("h1", null, "USERS PAGE!"),
+                posts.length > 0 ? (posts.map(function (post) { return PostContainer(post, auth, delPost, editPost); })) : (React.createElement("h1", null, "No posts yet")),
+                React.createElement("div", { className: "pt-5" },
+                    React.createElement("button", { className: "text-4xl hover:bg-custom-dark-blue w-10 ", onClick: getPrevSet }, "<"),
+                    React.createElement("i", { className: "w-5 px-10" }),
+                    React.createElement("button", { className: "text-4xl hover:bg-custom-dark-blue w-10", onClick: getNextSet }, ">"))),
+            React.createElement("i", null))));
 }
 //Creates a singular post
 var PostContainer = function (post, auth, delPost, editPost) {
     var user_id = post.user_details._id;
-    return (react_1["default"].createElement("div", { className: "border border-custom-silver mt-3 p-3" },
-        react_1["default"].createElement("div", null,
-            react_1["default"].createElement("div", { className: "grid grid-cols-2 text-base " },
-                react_1["default"].createElement("div", { className: " text-left" },
+    return (React.createElement("div", { className: "border border-custom-silver mt-3 p-3" },
+        React.createElement("div", null,
+            React.createElement("div", { className: "grid grid-cols-2 text-base " },
+                React.createElement("div", { className: " text-left" },
                     "Posted By: ",
                     post.user_details.username),
-                react_1["default"].createElement("div", { className: "text-right" },
+                React.createElement("div", { className: "text-right" },
                     "Post time: ",
                     DateTime.fromISO(post.post_time).toFormat("ff"))),
-            react_1["default"].createElement("br", null),
-            react_1["default"].createElement("div", { className: "text-xl break-words" }, post.message)),
-        auth ? (react_1["default"].createElement("div", { className: "text-left" },
-            react_1["default"].createElement("button", { className: "bg-custom-dark-blue p-1 text-base mx-1", onClick: function () { return delPost(post._id); } }, "Del"),
-            react_1["default"].createElement("button", { className: "bg-custom-dark-blue p-1 text-base mx-1", onClick: function () { return editPost(post._id); } }, "Edit"))) : (react_1["default"].createElement(react_1["default"].Fragment, null))));
+            React.createElement("br", null),
+            React.createElement("div", { className: "text-xl break-words" }, post.message)),
+        auth ? (React.createElement("div", { className: "text-left" },
+            React.createElement("button", { className: "bg-custom-dark-blue p-1 text-base mx-1", onClick: function () { return delPost(post._id); } }, "Del"),
+            React.createElement("button", { className: "bg-custom-dark-blue p-1 text-base mx-1", onClick: function () { return editPost(post._id); } }, "Edit"))) : (React.createElement(React.Fragment, null))));
 };
 exports["default"] = BlogUser;

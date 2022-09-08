@@ -1,10 +1,7 @@
 //IMPROTS//
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Outlet, useNavigate } from "react-router-dom";
-//Components//
-import Nav from "../Nav";
-import { response } from "express";
+import { useNavigate } from "react-router-dom";
 
 //API setup
 const api = axios.create({
@@ -18,8 +15,6 @@ function BlogPost() {
   const [messagePosted, setMessagePosted] = useState(false);
 
   const [checked, setChecked] = useState(true);
-
-  const [auth, setAuth] = useState(true); //replace with real Auth later
 
   const [formValue, setformValue] = useState({
     message: "",
@@ -52,11 +47,6 @@ function BlogPost() {
     formValue.isPublic = checked;
   }, [checked]);
 
-  useEffect(() => {
-    if (!auth) {
-      navigate("/user/login");
-    }
-  }, []);
 
   return (
     <div>

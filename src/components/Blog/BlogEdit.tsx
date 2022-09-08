@@ -1,8 +1,8 @@
 //IMPROTS//
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import { Outlet, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 //API setup
 const api = axios.create({
   baseURL: window.location.href,

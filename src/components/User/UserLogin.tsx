@@ -1,21 +1,14 @@
 //IMPROTS//
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-//Components//
-import Nav from "../Nav";
 
 //API setup
 const api = axios.create({
   baseURL: "http://localhost:5000/",
 });
 
-interface ErrorMessage {
-  name: String;
-  message: String;
-}
 
-const defaultErrorMessage: ErrorMessage[] = [];
 
 function UserLogin() {
   

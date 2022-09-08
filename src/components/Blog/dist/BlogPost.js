@@ -24,11 +24,10 @@ function BlogPost() {
     var navigate = react_router_dom_1.useNavigate();
     var _a = react_1.useState(false), messagePosted = _a[0], setMessagePosted = _a[1];
     var _b = react_1.useState(true), checked = _b[0], setChecked = _b[1];
-    var _c = react_1.useState(true), auth = _c[0], setAuth = _c[1]; //replace with real Auth later
-    var _d = react_1.useState({
+    var _c = react_1.useState({
         message: "",
         isPublic: checked
-    }), formValue = _d[0], setformValue = _d[1];
+    }), formValue = _c[0], setformValue = _c[1];
     var handleSubmit = function (e) {
         e.preventDefault();
         console.log(formValue);
@@ -48,11 +47,6 @@ function BlogPost() {
     react_1.useEffect(function () {
         formValue.isPublic = checked;
     }, [checked]);
-    react_1.useEffect(function () {
-        if (!auth) {
-            navigate("/user/login");
-        }
-    }, []);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(react_1["default"].Fragment, null,
             react_1["default"].createElement("div", { className: "grid grid-cols-5 " },
