@@ -19,7 +19,6 @@ function BlogUser() {
         api.get('/auth').then(function (res) {
             var results = res.data;
             setAuth(results.logged);
-            console.log(results);
         });
         api
             .get("/", {
@@ -52,16 +51,16 @@ function BlogUser() {
     }, [postPointer]);
     function getNextSet() {
         //increment pointer to get next 10
-        console.log("count" + count);
-        console.log("point" + postPointer);
+        ("count" + count);
+        ("point" + postPointer);
         if (count - (postPointer + 10) > 0) {
             setPostsPointer(postPointer + 10);
         }
         return;
     }
     function getPrevSet() {
-        console.log("count" + count);
-        console.log("point" + postPointer);
+        ("count" + count);
+        ("point" + postPointer);
         if (postPointer < 10) {
             return;
         }

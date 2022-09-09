@@ -1,7 +1,6 @@
 //IMPROTS//
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 //API setup
 const api = axios.create({
@@ -10,7 +9,6 @@ const api = axios.create({
 });
 
 function BlogPost() {
-  let navigate = useNavigate();
 
   const [messagePosted, setMessagePosted] = useState(false);
 
@@ -23,7 +21,6 @@ function BlogPost() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(formValue);
 
     api.post("/", formValue).then((res) => {
       if (res.status === 200) {

@@ -59,7 +59,7 @@ function UserLogin() {
     var _this = this;
     react_1.useEffect(function () {
         api.get('/user/login').then(function (res) {
-            console.log(res.data);
+            (res.data);
         });
     }, []);
     var navigate = react_router_dom_1.useNavigate();

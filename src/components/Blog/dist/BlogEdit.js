@@ -82,7 +82,6 @@ function PostEdit() {
             switch (_a.label) {
                 case 0:
                     e.preventDefault();
-                    console.log(formValue);
                     return [4 /*yield*/, axios_1["default"].post(window.location.pathname, formValue)];
                 case 1:
                     result = _a.sent();

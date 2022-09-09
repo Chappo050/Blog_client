@@ -15,7 +15,7 @@ function UserLogin() {
 
   useEffect(()=> {
     api.get('/user/login').then(res => {
-      console.log(res.data);
+      (res.data);
     })
   }, [])
   

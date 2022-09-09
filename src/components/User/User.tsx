@@ -14,7 +14,7 @@ const api = axios.create({
 function User() {
   useEffect(() => {
     api.get("/").then((res) => {
-      console.log(res.data);
+      (res.data);
     });
   }, []);
 

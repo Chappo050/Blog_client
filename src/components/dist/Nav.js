@@ -33,8 +33,6 @@ var DropdownMenu = function (_a) {
 };
 //Iterates over each item for the menu and adds links as href
 var DropdownMenuItem = function (option, itemLink) {
-    console.log(option);
-    console.log(itemLink);
     return (react_1["default"].createElement(react_2.Menu.Item, null, function (_a) {
         var active = _a.active;
         return (react_1["default"].createElement("a", { href: itemLink, className: classNames(active ? "bg-gray-900 text-white" : "text-custom-green-blue", "block px-4 py-2 text-sm") }, option));

@@ -76,9 +76,6 @@ const DropdownMenu: React.FC<Props> = ({ options, links, title }) => {
 
 //Iterates over each item for the menu and adds links as href
 const DropdownMenuItem = (option: string, itemLink: string) => {
-  console.log(option);
-  console.log(itemLink);
-  
   return (
     <Menu.Item>
       {({ active }) => (
