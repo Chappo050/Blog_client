@@ -49,7 +49,7 @@ function BlogPost() {
     }, [checked]);
     return (react_1["default"].createElement("div", null,
         react_1["default"].createElement(react_1["default"].Fragment, null,
-            react_1["default"].createElement("div", { className: "grid grid-cols-5 " },
+            react_1["default"].createElement("div", { className: "grid grid-cols-5 p-5 " },
                 react_1["default"].createElement("i", null),
                 react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "text-custom-green-blue border border-custom-silver text-center col-span-3 " },
                     react_1["default"].createElement("div", { className: "text-lg pt-5" }, "Please enter your message below."),

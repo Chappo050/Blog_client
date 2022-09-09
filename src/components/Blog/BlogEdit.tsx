@@ -63,11 +63,11 @@ function PostEdit() {
   return (
     <div>
       <>
-        <div className="grid grid-cols-5 ">
+        <div className="grid grid-cols-5 p-5 ">
           <i />
           <form
             onSubmit={handleSubmit}
-            className="text-custom-green-blue border border-custom-silver text-center col-span-3 "
+            className="text-custom-green-blue border border-custom-silver text-center col-span-3"
           >
             <div className="text-lg pt-5">Please Edit Your Post.</div>
 

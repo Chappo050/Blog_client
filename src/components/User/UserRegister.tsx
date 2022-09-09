@@ -36,16 +36,16 @@ function UserRegister() {
   }
   return (
     <div>
-      <div className="grid grid-cols-3 ">
+      <div className="grid grid-cols-3 pt-5 ">
         <i />
         <form
           onSubmit={handleSubmit}
-          className="text-white border border-custom-silver text-center "
+          className="text-white border border-custom-silver text-center p-5"
       
         >
           <div className="text-lg">Please register your account below.</div>
-          <div className="p-2 m-2">
-            <label className="pr-2 left-6">Username: </label>
+          <div className="p-2 m-2 grid grid-cols-3">
+            <label className="pr-2 flex">Username: </label>
             <input
               type="username"
               name="username"
@@ -53,11 +53,11 @@ function UserRegister() {
               value={formValue.username}
               onChange={handleChange}
               required
-              className="text-black p-0.5"
+              className="text-black p-0.5 col-span-2"
             />
           </div>
-          <div className="p-2 m-2">
-            <label className="pr-2">Email: </label>
+          <div className="p-2 m-2  grid grid-cols-3">
+            <label className="pr-2 flex">Email: </label>
             <input
               type="email"
               name="email"
@@ -65,11 +65,11 @@ function UserRegister() {
               value={formValue.email}
               onChange={handleChange}
               required
-              className="text-black p-0.5"
+              className="text-black p-0.5 col-span-2"
             />
           </div>
-          <div className="p-2 m-2">
-            <label className="pr-2">Password: </label>
+          <div className="p-2 m-2  grid grid-cols-3">
+            <label className="pr-2 flex">Password: </label>
             <input
               type="password"
               name="password"
@@ -77,7 +77,7 @@ function UserRegister() {
               value={formValue.password}
               onChange={handleChange}
               required
-              className="text-black p-0.5"
+              className="text-black p-0.5 col-span-2"
             />
           </div>
           <div className="">

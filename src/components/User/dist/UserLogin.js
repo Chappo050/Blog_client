@@ -88,9 +88,9 @@ function UserLogin() {
         setformValue(__assign(__assign({}, formValue), (_a = {}, _a[event.target.name] = event.target.value, _a)));
     };
     return (react_1["default"].createElement("div", null,
-        react_1["default"].createElement("div", { className: "grid grid-cols-3 " },
+        react_1["default"].createElement("div", { className: "grid grid-cols-3 pt-5 " },
             react_1["default"].createElement("i", null),
-            react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "text-white border border-custom-silver text-center " },
+            react_1["default"].createElement("form", { onSubmit: handleSubmit, className: "text-white border border-custom-silver text-center p-4 " },
                 react_1["default"].createElement("div", { className: "text-lg" }, "Please login below."),
                 react_1["default"].createElement("div", { className: "p-2 m-2" },
                     react_1["default"].createElement("label", { className: "pr-2" }, "Username: "),

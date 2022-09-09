@@ -108,9 +108,9 @@ function PostEdit() {
     };
     return (React.createElement("div", null,
         React.createElement(React.Fragment, null,
-            React.createElement("div", { className: "grid grid-cols-5 " },
+            React.createElement("div", { className: "grid grid-cols-5 p-5 " },
                 React.createElement("i", null),
-                React.createElement("form", { onSubmit: handleSubmit, className: "text-custom-green-blue border border-custom-silver text-center col-span-3 " },
+                React.createElement("form", { onSubmit: handleSubmit, className: "text-custom-green-blue border border-custom-silver text-center col-span-3" },
                     React.createElement("div", { className: "text-lg pt-5" }, "Please Edit Your Post."),
                     React.createElement("div", { className: "p-2 m-10" },
                         React.createElement("textarea", { name: "message", "overflow-y": "hidden", value: formValue.message, onChange: handleChange, required: true, className: "text-black p-2 h-44 w-full bg-custom-aquamarine", maxLength: 750 }, " ")),

@@ -43,11 +43,11 @@ function UserLogin() {
   }
   return (
     <div>
-      <div className="grid grid-cols-3 ">
+      <div className="grid grid-cols-3 pt-5 ">
         <i />
         <form
           onSubmit={handleSubmit}
-          className="text-white border border-custom-silver text-center "
+          className="text-white border border-custom-silver text-center p-4 "
       
         >
           <div className="text-lg">Please login below.</div>

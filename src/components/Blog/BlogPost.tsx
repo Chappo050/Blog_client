@@ -51,7 +51,7 @@ function BlogPost() {
   return (
     <div>
       <>
-        <div className="grid grid-cols-5 ">
+        <div className="grid grid-cols-5 p-5 ">
           <i />
           <form
             onSubmit={handleSubmit}
